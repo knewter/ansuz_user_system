@@ -24,6 +24,15 @@ class SessionsController < ApplicationController
     end
   end
 
+  def remote_authenticate
+    self.current_user = User.authenticate(params[:login], params[:password])
+    if logged_in?
+      render :text => 1
+    else
+      render :text => 0
+    end
+  end
+
   def destroy
     self.current_user.forget_me if logged_in?
     cookies.delete :auth_token

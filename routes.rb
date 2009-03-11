@@ -4,6 +4,7 @@ with_options :controller => 'sessions' do |session|
   session.login    'login',  :action => 'new'
   session.logout   'logout', :action => 'destroy'
   session.create_user 'create_user', :action => 'create_user'
+  session.remote_authenticate 'remote_authenticate', :action => 'remote_authenticate'
 end
 
 resource  :users
